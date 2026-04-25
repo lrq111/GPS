@@ -1,0 +1,4 @@
+defaults:
+  - qa_model: 7b-rl
+
+MAX_TURNS: 3

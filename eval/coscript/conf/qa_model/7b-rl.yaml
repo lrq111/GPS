@@ -1,0 +1,32 @@
+hydra:
+  run:
+    dir: outputs
+
+model_type: vllm
+name: qwen-a0-vllm
+shortname: a0
+
+model_config:
+  model: qwen/Qwen2.5-7B-Instruct
+  # Point this to the HF model produced by `scripts/merge.sh` (model export step).
+  download_dir: /checkpoints/qwen7b-hf
+  dtype: auto
+  tensor_parallel_size: 2
+  seed: 1
+
+
+run:
+  batch_size: 8
+  verbose: false
+  initial_completion_config:
+    do_sample: true
+    temperature: 0.9
+    top_p: 0.9
+    max_new_tokens: 1024
+    num_return_sequences: 4
+  completion_config:
+    do_sample: true
+    temperature: 0.7
+    top_p: 0.9
+    max_new_tokens: 2048
+    num_return_sequences: 1
