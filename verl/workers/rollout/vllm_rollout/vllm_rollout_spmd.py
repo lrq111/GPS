@@ -40,7 +40,6 @@ os.environ["VLLM_ATTENTION_BACKEND"] = "FLASH_ATTN"
                                           
 os.environ["VLLM_USE_V1"] = "0"
 
-import asyncio
 import getpass
 import inspect
 import logging

@@ -17,9 +17,7 @@ Preprocess the condqa dataset to parquet format
 
 import argparse
 import os
-import re
 
-import datasets
 from datasets import load_dataset
 
 from verl.utils.hdfs_io import copy, makedirs

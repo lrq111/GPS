@@ -16,6 +16,7 @@ FSDP PPO Trainer with Ray-based single controller.
 This trainer supports model-agonistic model initialization with huggingface
 """
 
+import json
 import os
 import uuid
 from collections import defaultdict
@@ -40,14 +41,12 @@ from verl.trainer.ppo.ray_trainer import (
     compute_advantage,
     compute_response_mask,
 )
-from verl.utils.profiler import marked_timer
-from verl.utils.rollout_skip import RolloutSkip
 from verl.utils.dag_reasoning import self_reflection_prompt, translate_error_to_english
 from verl.utils.new_utils import extract_pattern
+from verl.utils.profiler import marked_timer
+from verl.utils.rollout_skip import RolloutSkip
 from verl.workers.reward_manager.dapo import group_normalize
-import json
 
-                                                         
 LENGTH_SCORE_MAX_PLACEHOLDER = 2000
 
 
@@ -579,7 +578,7 @@ class RayDAPOTrainer(RayPPOTrainer):
                             reward_result = self.reward_fn(self.config, new_batch, return_dict=True)
                             reward_tensor = reward_result["reward_tensor"]
                             reward_extra_infos_dict = reward_result.get("reward_extra_info", {})
-                        except Exception as e:
+                        except Exception:
                             # print(f"Error in reward_fn: {e}")
                                                      
                             try:

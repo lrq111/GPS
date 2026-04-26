@@ -16,7 +16,6 @@ Note that we don't combine the main with ray_trainer as ray_trainer is used by o
 """
 
 import os
-import socket
 
 import hydra
 import ray

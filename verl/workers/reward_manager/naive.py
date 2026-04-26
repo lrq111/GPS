@@ -20,6 +20,7 @@ from verl import DataProto
 from verl.utils.reward_score import default_compute_score
 from verl.workers.reward_manager import register
 
+
 def group_normalize(a, k, alpha=0.5):
                     
     groups = [a[i:i+k] for i in range(0, len(a), k)]
