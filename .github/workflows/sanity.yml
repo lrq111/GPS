@@ -32,21 +32,24 @@
 
 name: sanity
 
+# on:
+#   # Trigger the workflow on push or pull request,
+#   # but only for the main branch
+#   push:
+#     branches:
+#       - main
+#       - v0.*
+#   pull_request:
+#     branches:
+#       - main
+#       - v0.*
+#     paths:
+#       - "**/*.py"
+#       - .github/workflows/sanity.yml
+#       - "tests/special_sanity/**"
 on:
-  # Trigger the workflow on push or pull request,
-  # but only for the main branch
-  push:
-    branches:
-      - main
-      - v0.*
-  pull_request:
-    branches:
-      - main
-      - v0.*
-    paths:
-      - "**/*.py"
-      - .github/workflows/sanity.yml
-      - "tests/special_sanity/**"
+  workflow_dispatch:
+
 
 # Cancel jobs on the same ref if a new one is triggered
 concurrency:

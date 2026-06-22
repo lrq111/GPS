@@ -2,12 +2,15 @@
 name: pre-commit
 
 # No need to avoid / cancel lightweight pre-commit jobs
+# on:
+#   pull_request:
+#   push:
+#     branches:
+#       - main
+#       - v0.*
 on:
-  pull_request:
-  push:
-    branches:
-      - main
-      - v0.*
+  workflow_dispatch:
+
 
 # Declare permissions just read content.
 permissions:
